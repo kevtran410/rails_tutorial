@@ -40,7 +40,7 @@ GEM
       tzinfo (~> 1.1)
     ansi (1.5.0)
     arel (7.1.4)
-    autoprefixer-rails (6.5.0.2)
+    autoprefixer-rails (6.5.1)
       execjs
     bcrypt (3.1.11)
     bcrypt-ruby (3.1.2)
@@ -222,4 +222,4 @@ DEPENDENCIES
   web-console (= 3.1.1)
 
 BUNDLED WITH
-   1.13.2
+   1.13.5
