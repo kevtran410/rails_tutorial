@@ -9,8 +9,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @microposts = @user.microposts.paginate  page: params[:page], per_page: 5
+    @microposts = @user.microposts.order_by_descending.
+      paginate page: params[:page], per_page: 5
     redirect_to root_url unless @user.activated?
+    if current_user.following? @user
+      @relationship = current_user.active_relationships.find_by followed_id: @user.id
+    else
+      @relationship = current_user.active_relationships.build
+    end
   end
 
   def new
@@ -45,7 +51,7 @@ class UsersController < ApplicationController
     flash[:success] = "User deleted"
     redirect_to users_url
   end
-
+  
   private
   def user_params
     params.require(:user).permit :name, :email, :password, :password_confirmation

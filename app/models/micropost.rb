@@ -1,6 +1,8 @@
 class Micropost < ApplicationRecord
   belongs_to :user
 
+  scope :new_feeds, ->(following_ids, user_id){
+    where("user_id IN (?) OR user_id = ?", following_ids, user_id)}
   scope :order_by_descending, ->{order created_at: :desc}
 
   mount_uploader :picture, PictureUploader
