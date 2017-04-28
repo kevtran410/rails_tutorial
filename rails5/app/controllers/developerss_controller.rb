@@ -20,25 +20,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 =end
+class DevelopersController < ApplicationController
 
-class InitTables < ActiveRecord::Migration
-  def change
-    create_table "inventory_item".pluralize.to_sym, id: false do |t|
-      t.string :id
-      t.string :name
-      t.string :release_date
-      t.string :manufacturer
+  def search_inventory
+    # Your code here
 
-      t.timestamps
-    end
-
-    create_table "manufacturer".pluralize.to_sym, id: false do |t|
-      t.string :name
-      t.string :home_page
-      t.string :phone
-
-      t.timestamps
-    end
-
+    render json: {"message" => "yes, it worked"}
   end
 end

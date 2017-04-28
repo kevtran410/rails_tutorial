@@ -21,24 +21,8 @@ limitations under the License.
 
 =end
 
-class InitTables < ActiveRecord::Migration
-  def change
-    create_table "inventory_item".pluralize.to_sym, id: false do |t|
-      t.string :id
-      t.string :name
-      t.string :release_date
-      t.string :manufacturer
 
-      t.timestamps
-    end
+class Manufacturer < ApplicationRecord
+  validates_presence_of :name
 
-    create_table "manufacturer".pluralize.to_sym, id: false do |t|
-      t.string :name
-      t.string :home_page
-      t.string :phone
-
-      t.timestamps
-    end
-
-  end
 end
